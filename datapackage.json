@@ -171,7 +171,54 @@
     }  
   },
   "spot_checks": [
-
+    {
+      "type": "$lookup",
+      "filter": {
+        "Region": "Northeast",
+        "Year": "2014-2016",
+        "Age Range": "12-17",
+        "Heroin Use": "Heroin Use in the Past Year",
+        "Measure Type": "Percent",        
+		 		"Variable": "Margins of Error"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": 0.04
+      } 
+    },
+    {
+      "type": "$lookup",
+      "filter": {
+        "Region": "Eastern Region",
+        "Year": "2014-2016",
+        "Age Range": "12-17",
+        "Heroin Use": "Heroin Use in the Past Year",
+        "Measure Type": "Percent",        
+		 		"Variable": "Heroin Use"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": -9999
+      } 
+    },
+    {
+      "type": "$lookup",
+      "filter": {
+        "Region": "Southwest Region",
+        "Year": "2014-2016",
+        "Age Range": "Over 17",
+        "Heroin Use": "Heroin Use in the Past Year",
+        "Measure Type": "Percent",        
+		 		"Variable": "Heroin Use"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": 0.56
+      } 
+    }     
   ],
   "dimension_groups": [
      {
